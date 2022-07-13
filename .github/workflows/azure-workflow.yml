@@ -20,6 +20,7 @@ jobs:
         enable-AzPSSession: true
     - name: 'Run az commands'
       uses: azure/powershell@v1
+      with:
         inlineScript: |
           Get-AzResourceGroup
         azPSVersion: "latest"
