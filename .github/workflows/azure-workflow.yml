@@ -1,0 +1,23 @@
+name: AzureLoginSample
+
+on: [push]
+
+jobs:
+  build-cli-ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Login via Az module
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    - name: 'Run cli list runtimes'
+      run: |
+        az webapp list-runtimes --os-type linux
+    - name: Login via Az module + ps
+      uses: azure/login@v1
+      with:
+        creds: ${{secrets.AZURE_CREDENTIALS}}
+        enable-AzPSSession: true
+    - name: 'Run az commands'
+      run: |
+        Get-date
