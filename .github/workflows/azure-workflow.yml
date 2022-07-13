@@ -19,5 +19,7 @@ jobs:
         creds: ${{secrets.AZURE_CREDENTIALS}}
         enable-AzPSSession: true
     - name: 'Run az commands'
-      run: |
-        Get-date
+      uses: azure/powershell@v1
+        inlineScript: |
+          Get-AzResourceGroup
+        azPSVersion: "latest"
